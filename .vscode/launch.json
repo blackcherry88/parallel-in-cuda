@@ -9,6 +9,9 @@
             "type": "cuda-gdb",
             "request": "launch",
             "program": "${workspaceFolder}/build/hellocuda/hellocuda",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "cmake build"            
         },
         {
             "name": "CUDA C++: Attach",
