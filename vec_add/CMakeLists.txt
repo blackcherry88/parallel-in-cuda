@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(hellocuda CUDA CXX C)  # enable cuda language
+project(vec_add CUDA CXX C)  # enable cuda language
 # set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
 set(CMAKE_CUDA_STANDARD 11)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
