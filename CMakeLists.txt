@@ -3,5 +3,7 @@ project(paraell-cuda)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_subdirectory(lib)
 add_subdirectory(hellocuda)
 add_subdirectory(vec_add)
+add_subdirectory(vec_add2)

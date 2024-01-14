@@ -1,11 +1,14 @@
 #include <stdio.h>
 
+
 const int N = 1024;
 
-__global__ void device_add(int *a, int *b, int *c)
+__global__ void device_add(int *a, int *b, int *c, int len)
 {
     int idx = threadIdx.x + blockIdx.x * blockDim.x;
-    c[idx] = a[idx] + b[idx];
+    if (idx < len) {
+        c[idx] = a[idx] + b[idx];
+    }
 }
 
 
@@ -47,7 +50,7 @@ int main()
     int n_threads = 8;
     int n_blocks = N / n_threads;
 
-    device_add<<<n_blocks, n_threads>>>(d_a, d_b, d_c);
+    device_add<<<n_blocks, n_threads>>>(d_a, d_b, d_c, N);
 
 	// Copy result back to host
 	cudaMemcpy(c, d_c, size, cudaMemcpyDeviceToHost);
