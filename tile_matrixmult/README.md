@@ -1,6 +1,6 @@
-    This implement mp1 solution for ECE408(Applied Parallel Programming)
+    This implement mp3 solution for ECE408(Applied Parallel Programming)
     
-    If you want test vec_add2, you can run
+    If you want test tile_matrixmult, you can run
     
     #suppose you are in ./build directory
 
