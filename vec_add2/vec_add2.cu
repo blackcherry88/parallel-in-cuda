@@ -4,7 +4,7 @@
 
 #define BLOCK_SIZE 256
 
-int ceil(int a, int b){
+inline int ceil(int a, int b){
     return int((a + b - 1) / b);
 }
 
@@ -53,13 +53,13 @@ int main(int argc, char ** argv) {
     wbTime_stop(GPU, "Copying input memory to the GPU.");
     
     //@@ Initialize the grid and block dimensions here
-    int DimGrid = ceil(inputLength, BLOCK_SIZE);
-    int DimBlock = BLOCK_SIZE;
-    printf("Grid %d dim %d\n", DimGrid, DimBlock);
+    int gridDim = ceil(inputLength, BLOCK_SIZE);
+    int blockDim = BLOCK_SIZE;
+    printf("Grid %d dim %d\n", gridDim, blockDim);
     
     wbTime_start(Compute, "Performing CUDA computation");
     //@@ Launch the GPU Kernel here
-    vecAdd<<<DimGrid, DimBlock>>>(deviceInput1, deviceInput2, deviceOutput, inputLength);
+    vecAdd<<<gridDim, blockDim>>>(deviceInput1, deviceInput2, deviceOutput, inputLength);
 
     cudaDeviceSynchronize();
     wbTime_stop(Compute, "Performing CUDA computation");
